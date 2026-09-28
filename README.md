@@ -38,7 +38,17 @@ The system underwent rigorous evaluation using standardized metrics and framewor
 
 **Skipped Tool:** The Giskard vulnerability scanner was attempted but ultimately skipped. The internal engine of the installed Giskard library hardcoded the standard OpenAI URL path (`/chat/completions`) and appended it incorrectly to the Azure endpoint, resulting in unresolved HTTP 404 errors. 
 
-## Known Limitations and Future Improvements
-A primary limitation involves the static configuration of the MCP context window, which currently retains exactly six messages (three conversational turns). If a user requires context spanning further back in a single session, the query expansion node will lack the necessary history to resolve references. 
+## Known Limitations and Future Roadmap
 
-Future improvements should include dynamic context window management that summarizes older turns rather than strictly truncating them. Additionally, integrating support for structured tabular data retrieval would improve the system's ability to answer complex pricing comparisons across multiple telecommunication plans.
+### Current Limitations
+1. **Static MCP Context Window:** Retains exactly six messages (three conversational turns). If a user requires context spanning further back in a single session, earlier conversational turns are truncated.
+2. **Monolingual Reranker:** The cross-encoder used for reranking (`ms-marco-MiniLM-L-6-v2`) is primarily English-trained, providing weaker semantic reranking signal for Arabic queries compared to English.
+3. **Aggregate Validation Metrics:** The validation and retry loop evaluates answers at the response level without segmenting retry rates or failure modes by language (`ar` vs. `en`).
+
+### Future Roadmap & Enhancements
+- **Language-Segmented Evaluation & Observability:** Segment evaluation benchmarks (RAGAS Faithfulness, Answer Relevance, and Recall) across Arabic and English query sets independently, and log validation loop failures with language and intent metadata to identify language-specific gaps.
+- **Pre- vs. Post-Rerank Recall Comparison:** Measure and isolate retrieval recall gains directly attributable to the cross-encoder reranking step across both languages.
+- **Multilingual Cross-Encoder Integration:** Benchmark native multilingual rerankers (such as `BAAI/bge-reranker-v2-m3` or `multilingual-e5-large`) to ensure balanced retrieval precision across Arabic dialects and English queries.
+- **Dynamic Context Summarization:** Implement conversational memory summarization to retain long-range context across extended customer support sessions without hitting token limits.
+- **Structured Plan Comparison Engine:** Add tabular data extraction and hybrid retrieval for multi-tier pricing and quota comparison queries.
+
