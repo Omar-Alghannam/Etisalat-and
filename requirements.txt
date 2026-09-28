@@ -1,0 +1,11 @@
+streamlit
+langchain
+langchain-openai
+langgraph
+chromadb
+openai
+python-docx
+pdfplumber
+python-dotenv
+sentence-transformers
+chainlit

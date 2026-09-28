@@ -1,0 +1,2662 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>e& Egypt | Our Plans</title>
+  
+  <!-- Tabler Icons & Google Fonts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #E30613;
+      --primary-hover: #b8050f;
+      --primary-glow: rgba(227, 6, 19, 0.4);
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* Light Theme Tokens */
+    [data-theme="light"] {
+      --bg-page: #f8f9fa;
+      --bg-nav: #ffffff;
+      --bg-util: #ffffff;
+      --card-bg: #ffffff;
+      --card-border: #eaedf0;
+      --card-hover-border: #dbe0e6;
+      --text-main: #1d1d1f;
+      --text-muted: #6e6e73;
+      --btn-ask-bg: #f4f5f7;
+      --btn-ask-border: #e1e4e8;
+      --btn-ask-text: #111111;
+      --pill-bg: #f1f3f5;
+      --pill-hover: #e4e7eb;
+      --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Dark Theme Tokens (Default) */
+    [data-theme="dark"] {
+      --bg-page: #0d0d0e;
+      --bg-nav: #141416;
+      --bg-util: #111112;
+      --card-bg: #18181b;
+      --card-border: #27272a;
+      --card-hover-border: #3f3f46;
+      --text-main: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --btn-ask-bg: #27272a;
+      --btn-ask-border: #3f3f46;
+      --btn-ask-text: #f4f4f5;
+      --pill-bg: #27272a;
+      --pill-hover: #3f3f46;
+      --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    [dir="rtl"] {
+      --font-family: 'Cairo', 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-family);
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* -------------------------------------------------------------
+       Top Utility Bar
+       ------------------------------------------------------------- */
+    .top-util-bar {
+      background: var(--bg-util);
+      border-bottom: 1px solid var(--card-border);
+      padding: 8px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .util-tabs {
+      display: flex;
+      gap: 20px;
+    }
+
+    .util-tab {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding-bottom: 2px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .util-tab.active {
+      color: var(--primary);
+      font-weight: 700;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .util-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .util-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 13px;
+      background: var(--pill-bg);
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+      transition: all 0.2s;
+    }
+
+    .util-btn:hover {
+      background: var(--pill-hover);
+      transform: translateY(-1px);
+    }
+
+    /* -------------------------------------------------------------
+       Main Navigation Bar
+       ------------------------------------------------------------- */
+    .main-nav {
+      background: var(--bg-nav);
+      padding: 16px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .brand-logo .logo-box {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 900;
+      font-size: 24px;
+      padding: 2px 10px;
+      border-radius: 8px;
+      letter-spacing: -1px;
+    }
+
+    .brand-logo .brand-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+
+    .nav-tagline {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-tagline .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    /* -------------------------------------------------------------
+       "Our Plans" Section
+       ------------------------------------------------------------- */
+    .plans-section {
+      max-width: 1200px;
+      margin: 40px auto 100px;
+      padding: 0 40px;
+    }
+
+    .section-title {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 32px;
+      letter-spacing: -0.5px;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .plan-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--card-hover-border);
+    }
+
+    .plan-card-image-wrap {
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      position: relative;
+      background: #111;
+    }
+
+    .plan-card-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .plan-card:hover .plan-card-image-wrap img {
+      transform: scale(1.04);
+    }
+
+    .plan-card-body {
+      padding: 24px 26px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .plan-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .plan-card-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .plan-card-link {
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s;
+    }
+
+    .plan-card-link:hover {
+      gap: 7px;
+    }
+
+    .plan-card-price-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .plan-card-price {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+
+    .plan-card-price span {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .plan-card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .plan-card-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-plan-ask {
+      background: var(--btn-ask-bg);
+      color: var(--btn-ask-text);
+      border: 1px solid var(--btn-ask-border);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .btn-plan-ask:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 14px var(--primary-glow);
+    }
+
+    /* -------------------------------------------------------------
+       FLOATING AI ASSISTANT WIDGET (FastAPI / Kapa style)
+       ------------------------------------------------------------- */
+    .ai-widget-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 32px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #E30613 0%, #a1030d 100%);
+      color: #ffffff;
+      border: none;
+      padding: 12px 22px 12px 16px;
+      border-radius: 36px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(227, 6, 19, 0.45);
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    [dir="rtl"] .ai-widget-fab {
+      right: auto;
+      left: 32px;
+      padding: 12px 16px 12px 22px;
+    }
+
+    .ai-widget-fab:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(227, 6, 19, 0.6);
+    }
+
+    .ai-fab-icon {
+      width: 32px;
+      height: 32px;
+      background: #ffffff;
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* AI Modal Window */
+    .ai-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(5px);
+      z-index: 1050;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .ai-modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .ai-modal {
+      width: 1060px;
+      max-width: 97vw;
+      height: 700px;
+      max-height: 92vh;
+      background: #151515;
+      border-radius: 20px;
+      border: 1px solid #2a2a2a;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: scale(0.95) translateY(20px);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* ---- Sessions Sidebar ---- */
+    .ai-sidebar {
+      width: 220px;
+      min-width: 220px;
+      background: #0f0f0f;
+      border-right: 1px solid #242424;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .ai-sidebar-header {
+      padding: 14px 14px 10px;
+      border-bottom: 1px solid #242424;
+    }
+
+    .ai-sidebar-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #666;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .ai-btn-new-chat {
+      width: 100%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+
+    .ai-btn-new-chat:hover { background: var(--primary-hover); }
+
+    .ai-thread-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .ai-thread-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+      color: #bbb;
+      font-size: 12px;
+      font-weight: 500;
+      user-select: none;
+      position: relative;
+    }
+
+    .ai-thread-item:hover { background: #1e1e1e; color: #fff; }
+    .ai-thread-item.active { background: #1e1e1e; color: #fff; border-left: 2px solid var(--primary); }
+
+    .ai-thread-name {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .ai-thread-name-input {
+      flex: 1;
+      background: #2a2a2a;
+      border: 1px solid var(--primary);
+      border-radius: 4px;
+      color: #fff;
+      font-size: 12px;
+      padding: 2px 6px;
+      outline: none;
+    }
+
+    .ai-thread-delete {
+      opacity: 0;
+      background: none;
+      border: none;
+      color: #888;
+      cursor: pointer;
+      font-size: 13px;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: opacity 0.15s, color 0.15s;
+      flex-shrink: 0;
+    }
+
+    .ai-thread-item:hover .ai-thread-delete { opacity: 1; }
+    .ai-thread-delete:hover { color: var(--primary); }
+
+    .ai-modal-overlay.open .ai-modal {
+      transform: scale(1) translateY(0);
+    }
+
+    .ai-modal-header {
+      background: #1b1b1b;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #282828;
+    }
+
+    .ai-header-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ai-header-logo {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 900;
+      font-size: 15px;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .ai-header-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .ai-header-subtitle {
+      font-size: 11px;
+      color: #888;
+    }
+
+    .ai-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ai-btn-icon {
+      background: #242424;
+      border: 1px solid #333;
+      color: #bbb;
+      font-size: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .ai-btn-icon:hover {
+      background: #333;
+      color: #fff;
+    }
+
+    .ai-modal-body {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .ai-chat-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #121212;
+      overflow: hidden;
+    }
+
+    .ai-messages-container {
+      flex: 1;
+      padding: 24px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .ai-welcome-box {
+      background: #181818;
+      border: 1px solid #282828;
+      border-radius: 14px;
+      padding: 20px;
+      color: #ddd;
+      font-size: 13px;
+    }
+
+    .ai-welcome-box h3 {
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ai-suggestion-pills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .ai-suggestion-pill {
+      background: #202020;
+      border: 1px solid #303030;
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: #e0e0e0;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    [dir="rtl"] .ai-suggestion-pill {
+      text-align: right;
+    }
+
+    .ai-suggestion-pill:hover {
+      background: rgba(227, 6, 19, 0.15);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    /* Message Rows */
+    .ai-message-row {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .ai-message-row.user {
+      justify-content: flex-end;
+    }
+
+    .ai-bot-avatar {
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ai-bubble-wrapper {
+      max-width: 82%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .ai-bubble {
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #eaeaea;
+    }
+
+    .ai-message-row.user .ai-bubble {
+      background: var(--primary);
+      color: #ffffff;
+      border-bottom-right-radius: 4px;
+    }
+
+    [dir="rtl"] .ai-message-row.user .ai-bubble {
+      border-bottom-right-radius: 14px;
+      border-bottom-left-radius: 4px;
+    }
+
+    .ai-message-row.assistant .ai-bubble {
+      background: #1c1c1c;
+      border: 1px solid #282828;
+      border-bottom-left-radius: 4px;
+    }
+
+    [dir="rtl"] .ai-message-row.assistant .ai-bubble {
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 4px;
+    }
+
+    /* --- Markdown content inside chat bubbles --- */
+    .ai-bubble p { margin: 0 0 8px 0; }
+    .ai-bubble p:last-child { margin-bottom: 0; }
+    .ai-bubble h3, .ai-bubble h4 { margin: 10px 0 6px 0; font-size: 14px; font-weight: 700; }
+    .ai-bubble strong { font-weight: 700; }
+    .ai-bubble code {
+      background: rgba(255,255,255,0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+    }
+    .ai-bubble ul, .ai-bubble ol {
+      margin: 6px 0;
+      padding-left: 20px;
+    }
+    .ai-bubble li { margin-bottom: 4px; }
+
+    /* Tables */
+    .ai-bubble table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 13px;
+      display: block;
+      overflow-x: auto;
+      border: 1px solid #333;
+      border-radius: 8px;
+    }
+    .ai-bubble th, .ai-bubble td {
+      border: 1px solid #2e2e2e;
+      padding: 8px 12px;
+      text-align: left;
+      line-height: 1.4;
+    }
+    [dir="rtl"] .ai-bubble th, [dir="rtl"] .ai-bubble td {
+      text-align: right;
+    }
+    .ai-bubble th {
+      background: rgba(227, 6, 19, 0.18);
+      font-weight: 700;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+    .ai-bubble td {
+      background: rgba(255,255,255,0.02);
+      color: #eaeaea;
+    }
+    .ai-bubble tr:hover td {
+      background: rgba(255,255,255,0.06);
+    }
+    [data-theme="light"] .ai-bubble table {
+      border-color: #e2e4e8;
+    }
+    [data-theme="light"] .ai-bubble th {
+      background: rgba(227, 6, 19, 0.08);
+      color: #1d1d1f;
+    }
+    [data-theme="light"] .ai-bubble td {
+      border-color: #e8eaed;
+      background: #fafafa;
+      color: #1d1d1f;
+    }
+    [data-theme="light"] .ai-bubble tr:hover td {
+      background: #f0f0f2;
+    }
+
+    /* Sources Card inside Modal */
+    /* Sources Card inside Modal */
+    .modal-sources-card {
+      background: #18181a;
+      border: 1px solid #27272a;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: fit-content;
+      max-width: 100%;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    [data-theme="light"] .modal-sources-card {
+      background: #f4f5f7;
+      border-color: #e2e5e9;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    }
+
+    .modal-sources-title {
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .modal-sources-title i {
+      color: var(--primary);
+    }
+
+    .modal-sources-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .modal-source-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #202024;
+      border: 1px solid #2d2d32;
+      padding: 7px 12px;
+      border-radius: 8px;
+      color: var(--text-main);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    [data-theme="light"] .modal-source-item {
+      background: #ffffff;
+      border-color: #e1e4e8;
+    }
+
+    .modal-source-item:hover {
+      border-color: var(--primary);
+      background: #27272e;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(227, 6, 19, 0.15);
+    }
+
+    [data-theme="light"] .modal-source-item:hover {
+      background: #fdfdfd;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(227, 6, 19, 0.1);
+    }
+
+    .source-item-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .source-icon {
+      font-size: 15px;
+      color: var(--primary);
+    }
+
+    .source-label {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .source-file-badge {
+      font-size: 10.5px;
+      font-weight: 500;
+      background: rgba(227, 6, 19, 0.12);
+      color: #ff4d58;
+      padding: 2px 7px;
+      border-radius: 6px;
+      border: 1px solid rgba(227, 6, 19, 0.25);
+      font-family: monospace;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    [data-theme="light"] .source-file-badge {
+      background: rgba(227, 6, 19, 0.08);
+      color: #d1000d;
+      border-color: rgba(227, 6, 19, 0.2);
+    }
+
+    .source-open-ext-btn {
+      color: var(--text-muted);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .source-open-ext-btn:hover {
+      color: #fff;
+      background: var(--primary);
+    }
+
+    /* -------------------------------------------------------------
+       DOCUMENT VIEWER MODAL
+       ------------------------------------------------------------- */
+    .doc-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .doc-modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .doc-modal {
+      width: 960px;
+      max-width: 95vw;
+      height: 88vh;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: scale(0.96);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .doc-modal-overlay.open .doc-modal {
+      transform: scale(1);
+    }
+
+    .doc-modal-header {
+      padding: 16px 24px;
+      background: var(--bg-nav);
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .doc-modal-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .doc-modal-filename {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .doc-modal-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .doc-modal-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .doc-btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--btn-ask-bg);
+      border: 1px solid var(--btn-ask-border);
+      color: var(--text-main);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .doc-btn-action:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .doc-modal-body {
+      flex: 1;
+      overflow-y: auto;
+      background: #2a2a2a;
+      color: var(--text-main);
+      padding: 24px;
+    }
+
+    .doc-rendered-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .doc-page-card {
+      background: #fff;
+      color: #111;
+      border-radius: 4px;
+      padding: 40px 52px;
+      margin-bottom: 24px;
+      position: relative;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+    }
+
+    .doc-page-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: #f0f0f0;
+      color: #666;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 18px;
+      font-family: monospace;
+    }
+
+    .doc-pdf-container {
+      width: 100%;
+      height: 100%;
+      min-height: 550px;
+      display: flex;
+    }
+
+    .doc-pdf-frame {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      background: #fff;
+    }
+
+    .doc-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .doc-page-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .doc-page-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: var(--pill-bg);
+      color: var(--text-muted);
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+    }
+
+    .doc-heading {
+      font-size: 15px;
+      font-weight: 700;
+      color: #111;
+      margin: 14px 0 6px 0;
+      border-left: 3px solid #e30613;
+      padding-left: 10px;
+    }
+
+    [dir="rtl"] .doc-heading {
+      border-left: none;
+      border-right: 3px solid #e30613;
+      padding-left: 0;
+      padding-right: 10px;
+    }
+
+    .doc-para {
+      font-size: 13.5px;
+      line-height: 1.75;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .doc-bullet {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #222;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .doc-bullet i { color: #e30613; margin-top: 3px; }
+
+    .doc-table-wrap {
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+
+    .doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .doc-table th, .doc-table td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: left;
+      color: #111;
+    }
+
+    [dir="rtl"] .doc-table th, [dir="rtl"] .doc-table td { text-align: right; }
+
+    .doc-table th {
+      background: #f5f5f5;
+      font-weight: 700;
+      color: #222;
+    }
+
+    .doc-table tr:nth-child(even) td { background: #fafafa; }
+
+    .doc-error-box {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+    }
+
+    .btn-doc-download-fallback {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      margin-top: 14px;
+      font-weight: 600;
+    }
+
+    /* Highlighted text inside document — visible on white page */
+    .doc-highlight {
+      background: #ffe066;
+      color: #7a4800;
+      font-weight: 700;
+      padding: 1px 3px;
+      border-radius: 3px;
+      border-bottom: 2px solid #f5a623;
+      display: inline;
+    }
+
+    [data-theme="light"] .doc-highlight {
+      background: rgba(255, 235, 59, 0.65);
+      color: #7b5800;
+      border-bottom: 2px solid #f57f17;
+    }
+
+    /* Top Callout for Cited Segment */
+    .doc-cited-callout {
+      background: rgba(227, 6, 19, 0.08);
+      border: 1px solid rgba(227, 6, 19, 0.3);
+      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+    }
+
+    [dir="rtl"] .doc-cited-callout {
+      border-left: 1px solid rgba(227, 6, 19, 0.3);
+      border-right: 4px solid var(--primary);
+    }
+
+    .doc-cited-callout-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--primary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .doc-cited-callout-body {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--text-main);
+      font-style: italic;
+    }
+
+    /* Clickable citation badges [1], [2] */
+    .citation-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      background: rgba(227, 6, 19, 0.12);
+      border: 1px solid rgba(227, 6, 19, 0.3);
+      border-radius: 4px;
+      padding: 1px 5px;
+      margin: 0 3px;
+      cursor: pointer;
+      vertical-align: 2px;
+      transition: all 0.18s ease;
+      text-decoration: none;
+    }
+
+    .citation-badge:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: scale(1.12);
+      box-shadow: 0 2px 8px rgba(227, 6, 19, 0.3);
+    }
+
+    /* Active highlight — pulsing ring when navigating with ▲/▼ */
+    .doc-highlight.doc-highlight-active {
+      outline: 3px solid #f5a623;
+      outline-offset: 2px;
+      animation: hlpulse 0.6s ease;
+      scroll-margin-top: 120px;
+    }
+
+    @keyframes hlpulse {
+      0%   { box-shadow: 0 0 0 0 rgba(245,166,35,0.7); }
+      70%  { box-shadow: 0 0 0 8px rgba(245,166,35,0); }
+      100% { box-shadow: 0 0 0 0 rgba(245,166,35,0); }
+    }
+
+    /* Divider between citation nav and highlight nav */
+    .citation-nav-divider {
+      width: 1px;
+      height: 22px;
+      background: #3a3a42;
+      flex-shrink: 0;
+    }
+
+    .citation-nav-hl-counter {
+      font-size: 11.5px;
+      color: #8e8e93;
+      white-space: nowrap;
+    }
+
+    /* Citation Navigator Bar */
+    .citation-navigator {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #1c1c1f;
+      border: 1px solid #2e2e34;
+      border-radius: 10px;
+      padding: 8px 14px;
+      margin-bottom: 16px;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .citation-nav-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #e0e0e0;
+    }
+
+    .citation-nav-badge {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      min-width: 28px;
+      text-align: center;
+    }
+
+    .citation-nav-counter {
+      font-size: 12px;
+      color: #8e8e93;
+    }
+
+    .citation-nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-nav-arrow {
+      background: #28282d;
+      border: 1px solid #3a3a42;
+      color: #f5f5f7;
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-size: 15px;
+    }
+
+    .btn-nav-arrow:hover:not(:disabled) {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-nav-arrow:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .citation-nav-file {
+      font-size: 11.5px;
+      font-family: monospace;
+      color: #aaa;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .doc-modal-body-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 24px 32px;
+      background: var(--bg-page);
+    }
+
+    .ai-thinking-toggle:hover {
+      color: #bbb;
+    }
+
+    .ai-thinking-steps {
+      display: none;
+      background: #151515;
+      border-left: 2px solid #333;
+      padding: 8px 12px;
+      margin-top: 4px;
+      font-size: 11px;
+      color: #777;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .ai-thinking-steps.open {
+      display: block;
+    }
+
+    /* Input Bar */
+    .ai-input-bar {
+      padding: 16px 20px;
+      background: #161616;
+      border-top: 1px solid #242424;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .ai-input-field {
+      flex: 1;
+      background: #202020;
+      border: 1px solid #333;
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .ai-input-field:focus {
+      border-color: var(--primary);
+    }
+
+    .ai-btn-send {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .ai-btn-send:hover {
+      background: var(--primary-hover);
+      transform: scale(1.05);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .plans-grid {
+        grid-template-columns: 1fr;
+      }
+      .top-util-bar, .main-nav, .plans-section {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-util-bar">
+    <div class="util-tabs">
+      <span class="util-tab active" id="tabConsumer">Consumer</span>
+      <span class="util-tab" id="tabBusiness">Business</span>
+    </div>
+    <div class="util-right">
+      <!-- Dark / Light Mode Toggle -->
+      <button class="util-btn" id="themeToggleBtn" onclick="toggleTheme()">
+        <i class="ti ti-sun" id="themeIcon"></i> <span id="themeBtnText">Light Mode</span>
+      </button>
+      <!-- Language Switcher -->
+      <button class="util-btn" id="langSwitchBtn" onclick="toggleLanguage()">
+        <i class="ti ti-world"></i> <span id="langBtnText">عربي</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <header class="main-nav">
+    <a href="#" class="brand-logo">
+      <div class="logo-box">e&</div>
+      <div class="brand-text">etisalat<br>and</div>
+    </a>
+    <div class="nav-tagline">
+      <span class="status-dot"></span> Official e& Egypt Portal & AI
+    </div>
+  </header>
+
+  <!-- "Our Plans" Section -->
+  <main class="plans-section" id="plans">
+    <h1 class="section-title" id="ourPlansTitle">Our Plans</h1>
+    <div class="plans-grid">
+
+      <!-- Plan 1: Emerald -->
+      <article class="plan-card" id="emerald">
+        <div class="plan-card-image-wrap">
+          <img src="/images/media_1787939415544.png" alt="Emerald Postpaid" onerror="this.src='/images/emerald.png'" />
+        </div>
+        <div class="plan-card-body">
+          <div class="plan-card-header">
+            <h2 class="plan-card-title">Emerald</h2>
+            <a href="https://www.etisalat.eg/en/postpaid/emerald.html" target="_blank" class="plan-card-link" id="linkEmerald">Know More <i class="ti ti-arrow-up-right"></i></a>
+          </div>
+          <div class="plan-card-price-label" id="lblEmeraldFrom">Beginning From</div>
+          <div class="plan-card-price">460 <span>EGP / Month</span></div>
+          <p class="plan-card-desc" id="descEmerald">
+            Welcome to the realm of exclusive privileges where we will provide you with a vast spectrum of telecom services & connectivity, with plush lifestyle benefits.
+          </p>
+          <div class="plan-card-actions">
+            <button class="btn-plan-ask" onclick="openAiWithQuery('What are the benefits and packages of Emerald?')">
+              <i class="ti ti-sparkles" style="color: var(--primary);"></i> Ask AI about Emerald
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Plan 2: Hekaya Mixat -->
+      <article class="plan-card" id="hekaya-mixat">
+        <div class="plan-card-image-wrap">
+          <img src="/images/media_1787939431258.png" alt="Hekaya Mixat Campaign" onerror="this.src='/images/hekaya_mixat.png'" />
+        </div>
+        <div class="plan-card-body">
+          <div class="plan-card-header">
+            <h2 class="plan-card-title">Hekaya Mixat</h2>
+            <a href="https://www.etisalat.eg/en/prepaid/hekaya_mixat.html" target="_blank" class="plan-card-link" id="linkHekayaMix">Know More <i class="ti ti-arrow-up-right"></i></a>
+          </div>
+          <div class="plan-card-price-label" id="lblHekayaMixFrom">Beginning From</div>
+          <div class="plan-card-price">52 <span>EGP / Month</span></div>
+          <p class="plan-card-desc" id="descHekayaMix">
+            Stay in control & Migrate to New Hekaya Mixat Bundles; the largest bundles in Egypt with favorite numbers and Coins rewards.
+          </p>
+          <div class="plan-card-actions">
+            <button class="btn-plan-ask" onclick="openAiWithQuery('What are all Hekaya Mixat plans and prices?')">
+              <i class="ti ti-sparkles" style="color: var(--primary);"></i> Ask AI about Mixat
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Plan 3: Hekaya Internet -->
+      <article class="plan-card" id="hekaya-internet">
+        <div class="plan-card-image-wrap">
+          <img src="/images/media_1787939426653.png" alt="Hekaya Internet Campaign" onerror="this.src='/images/hekaya_internet.png'" />
+        </div>
+        <div class="plan-card-body">
+          <div class="plan-card-header">
+            <h2 class="plan-card-title">Hekaya Internet</h2>
+            <a href="https://www.etisalat.eg/en/prepaid/hekaya_internet.html" target="_blank" class="plan-card-link" id="linkHekayaNet">Know More <i class="ti ti-arrow-up-right"></i></a>
+          </div>
+          <div class="plan-card-price-label" id="lblHekayaNetFrom">Beginning From</div>
+          <div class="plan-card-price">46 <span>EGP / Month</span></div>
+          <p class="plan-card-desc" id="descHekayaNet">
+            Now with Hekaya Internet get up to 50,000 megabytes & choose up to 3 of your favorite apps to enjoy for Up to 1 GB each.
+          </p>
+          <div class="plan-card-actions">
+            <button class="btn-plan-ask" onclick="openAiWithQuery('What are the Hekaya Internet tiers and mini plans?')">
+              <i class="ti ti-sparkles" style="color: var(--primary);"></i> Ask AI about Internet
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Plan 4: Akwa Kart -->
+      <article class="plan-card" id="aqwa-card">
+        <div class="plan-card-image-wrap">
+          <img src="/images/media_1787939458018.png" alt="Akwa Kart Campaign" onerror="this.src='/images/aqwa_card.png'" />
+        </div>
+        <div class="plan-card-body">
+          <div class="plan-card-header">
+            <h2 class="plan-card-title">Akwa Kart</h2>
+            <a href="https://www.etisalat.eg/en/prepaid/aqwacard.html" target="_blank" class="plan-card-link" id="linkAkwa">Know More <i class="ti ti-arrow-up-right"></i></a>
+          </div>
+          <div class="plan-card-price-label" id="lblAkwaFrom">Beginning From</div>
+          <div class="plan-card-price">5 <span>EGP / Recharge</span></div>
+          <p class="plan-card-desc" id="descAkwa">
+            Recharge Akwa Kart in 7 different methods with the value and validity of your choice. Enjoy max minutes and internet units.
+          </p>
+          <div class="plan-card-actions">
+            <button class="btn-plan-ask" onclick="openAiWithQuery('What are all Aqwa Card recharge prices and units?')">
+              <i class="ti ti-sparkles" style="color: var(--primary);"></i> Ask AI about Akwa Kart
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- -------------------------------------------------------------
+       FLOATING AI ASSISTANT (FastAPI / Kapa style)
+       ------------------------------------------------------------- -->
+  <button class="ai-widget-fab" id="aiFabBtn" onclick="toggleAiModal(true)">
+    <div class="ai-fab-icon">e&</div>
+    <span id="fabText">Ask e& AI</span>
+  </button>
+
+  <!-- Modal Overlay -->
+  <div class="ai-modal-overlay" id="aiModalOverlay" onclick="if(event.target===this) toggleAiModal(false)">
+    <div class="ai-modal">
+      
+      <!-- Modal Header -->
+      <div class="ai-modal-header">
+        <div class="ai-header-brand">
+          <div class="ai-header-logo">e&</div>
+          <div>
+            <div class="ai-header-title" id="modalTitle">e& Egypt AI Assistant</div>
+            <div class="ai-header-subtitle" id="modalSubtitle">Powered by LangGraph RAG & Azure OpenAI</div>
+          </div>
+        </div>
+        <div class="ai-header-actions">
+          <button class="ai-btn-icon" title="Clear Chat" onclick="newChat()"><i class="ti ti-trash"></i></button>
+          <button class="ai-btn-icon" title="Close" onclick="toggleAiModal(false)"><i class="ti ti-x"></i></button>
+        </div>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="ai-modal-body">
+
+        <!-- Sessions Sidebar -->
+        <div class="ai-sidebar">
+          <div class="ai-sidebar-header">
+            <div class="ai-sidebar-title">Conversations</div>
+            <button class="ai-btn-new-chat" id="btnNewChat" onclick="newChat()">
+              <i class="ti ti-plus"></i> New Chat
+            </button>
+          </div>
+          <div class="ai-thread-list" id="aiThreadList"></div>
+        </div>
+
+        <!-- Chat Area -->
+        <div class="ai-chat-area">
+          <div class="ai-messages-container" id="aiMessagesContainer">
+            
+            <!-- Welcome Box -->
+            <div class="ai-welcome-box" id="welcomeBox">
+              <h3 id="welcomeTitle"><i class="ti ti-sparkles" style="color: var(--primary);"></i> How can I help you today?</h3>
+              <p id="welcomeDesc">I am the official e& Egypt AI Assistant. Ask me anything about our postpaid & prepaid plans, internet packages, roaming, or codes.</p>
+              <div class="ai-suggestion-pills">
+                <div class="ai-suggestion-pill" onclick="sendSuggestion('What is the difference between Hekaya Mixat and Hekaya Internet?')">
+                  <i class="ti ti-help"></i> Hekaya Mixat vs Internet
+                </div>
+                <div class="ai-suggestion-pill" onclick="sendSuggestion('What are Emerald 460 perks and international minutes?')">
+                  <i class="ti ti-crown"></i> Emerald 460 Perks
+                </div>
+                <div class="ai-suggestion-pill" onclick="sendSuggestion('What are all Aqwa Card recharge values?')">
+                  <i class="ti ti-credit-card"></i> Aqwa Card Values
+                </div>
+                <div class="ai-suggestion-pill" onclick="sendSuggestion('Can I use DataLine on my mobile phone?')">
+                  <i class="ti ti-device-mobile"></i> DataLine Compatibility
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Input Bar -->
+          <div class="ai-input-bar">
+            <input type="text" id="aiInput" class="ai-input-field" placeholder="Ask me a question about e& Egypt plans..." onkeydown="if(event.key==='Enter') sendMessage()" />
+            <button class="ai-btn-send" onclick="sendMessage()"><i class="ti ti-send"></i></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Document Viewer Modal Overlay -->
+  <div class="doc-modal-overlay" id="docModalOverlay" onclick="if(event.target===this) closeDocModal()">
+    <div class="doc-modal">
+      <div class="doc-modal-header">
+        <div class="doc-modal-title-group">
+          <i class="ti ti-file-text" id="docModalIcon" style="color: var(--primary); font-size: 24px;"></i>
+          <div>
+            <div class="doc-modal-filename" id="docModalFilename">Document Viewer</div>
+            <div class="doc-modal-sub" id="docModalSub">Official e& Egypt Catalog Document</div>
+          </div>
+        </div>
+        <div class="doc-modal-actions">
+          <a href="#" target="_blank" class="doc-btn-action" id="docModalOpenTabBtn" title="Open in New Tab">
+            <i class="ti ti-external-link"></i> <span id="docOpenTabText">Open Full File</span>
+          </a>
+          <a href="#" download class="doc-btn-action" id="docModalDownloadBtn" title="Download Document">
+            <i class="ti ti-download"></i> <span id="docDownloadText">Download</span>
+          </a>
+          <button class="ai-btn-icon" onclick="closeDocModal()"><i class="ti ti-x"></i></button>
+        </div>
+      </div>
+      <div class="doc-modal-body-wrap">
+        <!-- Citation Navigator (hidden until a citation is active) -->
+        <div class="citation-navigator" id="citationNavigator" style="display:none">
+          <!-- Citation stepping: ◀ [N] X of Y ▶ -->
+          <div class="citation-nav-meta">
+            <span class="citation-nav-label">Citation</span>
+            <span class="citation-nav-badge" id="citationNavBadge">[1]</span>
+            <span class="citation-nav-counter" id="citationNavCounter">1 of 1</span>
+          </div>
+          <div class="citation-nav-controls">
+            <button type="button" class="btn-nav-arrow" id="btnPrevCitation" onclick="navigateCitation(-1)" title="Previous citation (◀)">
+              <i class="ti ti-chevron-left"></i>
+            </button>
+            <button type="button" class="btn-nav-arrow" id="btnNextCitation" onclick="navigateCitation(1)" title="Next citation (▶)">
+              <i class="ti ti-chevron-right"></i>
+            </button>
+          </div>
+
+          <div class="citation-nav-divider"></div>
+
+          <!-- Highlight stepping within doc: ▲ Mark X of Y ▼ -->
+          <span class="citation-nav-hl-counter" id="hlCounter" style="display:none">Mark 1 of 1</span>
+          <div class="citation-nav-controls" id="hlNavControls" style="display:none">
+            <button type="button" class="btn-nav-arrow" id="btnPrevHL" onclick="navigateHighlight(-1)" title="Previous highlight (▲)">
+              <i class="ti ti-chevron-up"></i>
+            </button>
+            <button type="button" class="btn-nav-arrow" id="btnNextHL" onclick="navigateHighlight(1)" title="Next highlight (▼)">
+              <i class="ti ti-chevron-down"></i>
+            </button>
+          </div>
+
+          <div class="citation-nav-file" id="citationNavFile">
+            <i class="ti ti-file-text"></i>
+            <span id="citationNavFileName"></span>
+          </div>
+        </div>
+        <!-- Document Content -->
+        <div class="doc-modal-body" id="docModalBody">
+          <div class="doc-loading"><i class="ti ti-loader ti-spin"></i> Loading document preview...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    let currentTheme = localStorage.getItem('theme') || 'dark';
+    let currentLanguage = 'en';
+    let chatMessages = [];
+    let isWaitingResponse = false;
+
+    // ----------------------------------------------------------------
+    // Citation Navigation State
+    // ----------------------------------------------------------------
+    const citationNavState = {
+      citations: [],
+      currentIndex: 0,
+      loadedKey: null,
+      highlightIndex: 0   // which <mark> is currently active within the doc
+    };
+
+    function buildMessageCitationList(msg) {
+      if (!msg || !msg.content) return [];
+      // Collect all [N] in the order they first appear, deduplicated
+      const seen = new Set();
+      const ordered = [];
+      for (const m of msg.content.matchAll(/\[(\d+)\]/g)) {
+        const n = parseInt(m[1], 10);
+        if (!seen.has(n)) { seen.add(n); ordered.push(n); }
+      }
+      return ordered.map(citeNum => {
+        let srcMeta = null;
+        if (Array.isArray(msg.sources)) {
+          srcMeta = msg.sources.find(s => typeof s === 'object' && s.citation_idx === citeNum)
+                 || msg.sources[citeNum - 1]
+                 || null;
+        }
+        const resolved = resolveDocInfo(srcMeta || '', currentLanguage);
+        const exactChunkText = (typeof srcMeta === 'object' && srcMeta && srcMeta.highlight_text)
+          ? srcMeta.highlight_text
+          : '';
+        return {
+          citationNumber: citeNum,
+          fileName: resolved.fileName,
+          lang: resolved.lang,
+          label: resolved.label,
+          fileUrl: resolved.fileUrl,
+          downloadUrl: resolved.downloadUrl,
+          isPdf: resolved.isPdf,
+          exactChunkText,
+          responseText: msg.content || '' // full response — server uses this to mark ALL words
+        };
+      });
+    }
+
+    // Session management
+    let currentThreadId = null;
+    let allThreads = {};
+
+    // ----------------------------------------------------------------
+    // Session / Thread helpers
+    // ----------------------------------------------------------------
+    function generateId() {
+      return 'thread_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7);
+    }
+
+    function threadNameFromMessages(msgs) {
+      const first = msgs.find(m => m.role === 'user');
+      if (!first) return 'New Chat';
+      return first.content.slice(0, 38) + (first.content.length > 38 ? '…' : '');
+    }
+
+    async function loadThreads() {
+      try {
+        const res = await fetch('/api/threads');
+        if (res.ok) {
+          const data = await res.json();
+          allThreads = {};
+          (data.threads || []).forEach(t => { allThreads[t.id] = t; });
+          renderThreadList();
+        }
+      } catch(e) { console.warn('Could not load threads', e); }
+    }
+
+    async function saveCurrentThread() {
+      if (!chatMessages || chatMessages.length === 0) return;
+      if (!currentThreadId) currentThreadId = generateId();
+      const name = allThreads[currentThreadId]?.name || threadNameFromMessages(chatMessages);
+      const thread = { id: currentThreadId, name, messages: chatMessages };
+      allThreads[currentThreadId] = thread;
+      renderThreadList();
+      try {
+        await fetch('/api/threads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(thread)
+        });
+      } catch(e) { console.warn('Could not save thread', e); }
+    }
+
+    async function deleteThread(id, event) {
+      event.stopPropagation();
+      try {
+        await fetch('/api/threads/' + id, { method: 'DELETE' });
+      } catch(e) {}
+      delete allThreads[id];
+      if (currentThreadId === id) {
+        currentThreadId = null;
+        newChat();
+      }
+      renderThreadList();
+    }
+
+    function switchThread(id) {
+      const thread = allThreads[id];
+      if (!thread) return;
+      currentThreadId = id;
+      chatMessages = [...thread.messages];
+      renderMessages();
+      renderThreadList();
+    }
+
+    function newChat() {
+      currentThreadId = null;
+      chatMessages = [];
+      clearMessages();
+      renderThreadList();
+      document.getElementById('aiInput').focus();
+    }
+
+    function startRenameThread(id, event) {
+      event.stopPropagation();
+      const item = document.getElementById('thread-item-' + id);
+      const nameSpan = item.querySelector('.ai-thread-name');
+      const currentName = allThreads[id]?.name || 'New Chat';
+      const input = document.createElement('input');
+      input.className = 'ai-thread-name-input';
+      input.value = currentName;
+      nameSpan.replaceWith(input);
+      input.focus();
+      input.select();
+      const commit = async () => {
+        const newName = input.value.trim() || currentName;
+        allThreads[id].name = newName;
+        try {
+          await fetch('/api/threads', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(allThreads[id])
+          });
+        } catch(e) {}
+        renderThreadList();
+      };
+      input.onblur = commit;
+      input.onkeydown = e => { if (e.key === 'Enter') input.blur(); if (e.key === 'Escape') { input.value = currentName; input.blur(); } };
+    }
+
+    function renderThreadList() {
+      const list = document.getElementById('aiThreadList');
+      if (!list) return;
+      const threads = Object.values(allThreads).reverse();
+      if (!threads.length) {
+        list.innerHTML = '<div style="padding:12px;font-size:11px;color:#555;text-align:center;">No conversations yet</div>';
+        return;
+      }
+      list.innerHTML = threads.map(t => `
+        <div class="ai-thread-item ${t.id === currentThreadId ? 'active' : ''}" id="thread-item-${t.id}"
+          onclick="switchThread('${t.id}')">
+          <i class="ti ti-message-circle" style="font-size:13px;flex-shrink:0;"></i>
+          <span class="ai-thread-name" title="Double-click to rename" ondblclick="startRenameThread('${t.id}', event)">${escapeHtml(t.name)}</span>
+          <button class="ai-thread-delete" onclick="deleteThread('${t.id}', event)" title="Delete">
+            <i class="ti ti-trash"></i>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // Initialize Theme
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    updateThemeButton();
+    loadThreads();
+
+    function toggleTheme() {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      localStorage.setItem('theme', currentTheme);
+      updateThemeButton();
+    }
+
+    function updateThemeButton() {
+      const isDark = currentTheme === 'dark';
+      document.getElementById('themeIcon').className = isDark ? 'ti ti-sun' : 'ti ti-moon';
+      document.getElementById('themeBtnText').innerText = isDark ? (currentLanguage === 'ar' ? 'الوضع الفاتح' : 'Light Mode') : (currentLanguage === 'ar' ? 'الوضع الداكن' : 'Dark Mode');
+    }
+
+    const DICTIONARY = {
+      en: {
+        langBtn: 'عربي',
+        ourPlans: 'Our Plans',
+        fab: 'Ask e& AI',
+        inputPlaceholder: 'Ask me a question about e& Egypt plans...',
+        modalTitle: 'e& Egypt AI Assistant',
+        modalSub: 'Powered by LangGraph RAG & Azure OpenAI',
+        welcomeTitle: 'How can I help you today?',
+        welcomeDesc: 'I am the official e& Egypt AI Assistant. Ask me anything about our postpaid & prepaid plans, internet packages, roaming, or codes.',
+        sourcesTitle: 'Sources (المصادر) — Click to View Document',
+        plans: {
+          emerald: {
+            title: "Emerald", link: "Know More <i class='ti ti-arrow-up-right'></i>", from: "Beginning From",
+            price: "460 <span>EGP / Month</span>", desc: "Welcome to the realm of exclusive privileges where we will provide you with a vast spectrum of telecom services & connectivity, with plush lifestyle benefits.",
+            ask: "<i class='ti ti-sparkles' style='color: var(--primary);'></i> Ask AI about Emerald", askQuery: "What are the benefits and packages of Emerald?"
+          },
+          hekayaMix: {
+            title: "Hekaya Mixat", link: "Know More <i class='ti ti-arrow-up-right'></i>", from: "Beginning From",
+            price: "52 <span>EGP / Month</span>", desc: "Stay in control & Migrate to New Hekaya Mixat Bundles; the largest bundles in Egypt with favorite numbers and Coins rewards.",
+            ask: "<i class='ti ti-sparkles' style='color: var(--primary);'></i> Ask AI about Mixat", askQuery: "What are all Hekaya Mixat plans and prices?"
+          },
+          hekayaNet: {
+            title: "Hekaya Internet", link: "Know More <i class='ti ti-arrow-up-right'></i>", from: "Beginning From",
+            price: "46 <span>EGP / Month</span>", desc: "Now with Hekaya Internet get up to 50,000 megabytes & choose up to 3 of your favorite apps to enjoy for Up to 1 GB each.",
+            ask: "<i class='ti ti-sparkles' style='color: var(--primary);'></i> Ask AI about Internet", askQuery: "What are the Hekaya Internet tiers and mini plans?"
+          },
+          akwa: {
+            title: "Akwa Kart", link: "Know More <i class='ti ti-arrow-up-right'></i>", from: "Beginning From",
+            price: "5 <span>EGP / Recharge</span>", desc: "Recharge Akwa Kart in 7 different methods with the value and validity of your choice. Enjoy max minutes and internet units.",
+            ask: "<i class='ti ti-sparkles' style='color: var(--primary);'></i> Ask AI about Akwa Kart", askQuery: "What are all Aqwa Card recharge prices and units?"
+          }
+        },
+        suggestions: [
+          { icon: "ti-help", text: "Hekaya Mixat vs Internet", query: "What is the difference between Hekaya Mixat and Hekaya Internet?" },
+          { icon: "ti-crown", text: "Emerald 460 Perks", query: "What are Emerald 460 perks and international minutes?" },
+          { icon: "ti-credit-card", text: "Aqwa Card Values", query: "What are all Aqwa Card recharge values?" },
+          { icon: "ti-device-mobile", text: "DataLine Compatibility", query: "Can I use DataLine on my mobile phone?" }
+        ]
+      },
+      ar: {
+        langBtn: 'English',
+        ourPlans: 'باقاتنا المميزة',
+        fab: 'اسأل مساعد e& الذكي',
+        inputPlaceholder: 'اسأل عن أي باقة أو نظام من إي آند مصر...',
+        modalTitle: 'مساعد إي آند مصر الذكي',
+        modalSub: 'مدعوم بـ LangGraph RAG و Azure OpenAI',
+        welcomeTitle: 'كيف يمكنني مساعدتك اليوم؟',
+        welcomeDesc: 'أنا المساعد الذكي الرسمي لشركة إي آند مصر. اسألني عن باقات المحمول والإنترنت، الأنظمة، الأكواد والشروط.',
+        sourcesTitle: 'المصادر والوثائق الرسمية — اضغط لفتح المستند',
+        plans: {
+          emerald: {
+            title: "إيميرالد", link: "اعرف المزيد <i class='ti ti-arrow-up-right'></i>", from: "يبدأ من",
+            price: "460 <span>جنيه / شهر</span>", desc: "مرحباً بك في عالم الامتيازات الحصرية حيث نقدم لك طيفاً واسعاً من خدمات الاتصالات والمزايا العصرية الفاخرة.",
+            ask: "<i class='ti ti-sparkles' style='color: var(--primary);'></i> اسأل عن إيميرالد", askQuery: "ما هي مميزات وباقات نظام إيميرالد؟"
+          },
+          hekayaMix: {
+            title: "حكاية ميكسات", link: "اعرف المزيد <i class='ti ti-arrow-up-right'></i>", from: "يبدأ من",
+            price: "52 <span>جنيه / شهر</span>", desc: "تحكم في استهلاكك وحول لباقات حكاية ميكسات الجديدة؛ أكبر باقات في مصر مع أرقام مفضلة وعملات كوينز.",
+            ask: "<i class='ti ti-sparkles' style='color: var(--primary);'></i> اسأل عن ميكسات", askQuery: "ما هي أسعار وتفاصيل باقات حكاية ميكسات؟"
+          },
+          hekayaNet: {
+            title: "حكاية إنترنت", link: "اعرف المزيد <i class='ti ti-arrow-up-right'></i>", from: "يبدأ من",
+            price: "46 <span>جنيه / شهر</span>", desc: "الآن مع حكاية إنترنت احصل على حتى 50,000 ميجابايت واختار حتى 3 من تطبيقاتك المفضلة للاستمتاع بـ 1 جيجابايت لكل تطبيق.",
+            ask: "<i class='ti ti-sparkles' style='color: var(--primary);'></i> اسأل عن حكاية إنترنت", askQuery: "ما هي أسعار وباقات حكاية إنترنت؟"
+          },
+          akwa: {
+            title: "أقوى كارت", link: "اعرف المزيد <i class='ti ti-arrow-up-right'></i>", from: "يبدأ من",
+            price: "5 <span>جنيه / شحنة</span>", desc: "اشحن أقوى كارت بـ 7 طرق مختلفة بالقيمة والصلاحية اللي تناسبك. استمتع بأقصى الدقائق وميجابايتس الإنترنت.",
+            ask: "<i class='ti ti-sparkles' style='color: var(--primary);'></i> اسأل عن أقوى كارت", askQuery: "ما هي قيم شحن ووحدات أقوى كارت؟"
+          }
+        },
+        suggestions: [
+          { icon: "ti-help", text: "ميكسات ضد إنترنت", query: "ما الفرق بين حكاية ميكسات وحكاية إنترنت؟" },
+          { icon: "ti-crown", text: "مميزات إيميرالد 460", query: "ما هي مميزات إيميرالد 460 والدقائق الدولية؟" },
+          { icon: "ti-credit-card", text: "فئات أقوى كارت", query: "ما هي كل فئات شحن أقوى كارت؟" },
+          { icon: "ti-device-mobile", text: "داتا لاين للموبايل", query: "هل يمكنني استخدام داتا لاين على الهاتف المحمول؟" }
+        ]
+      }
+    };
+
+    function updatePlanCard(idPrefix, planData) {
+      document.querySelector(`#${idPrefix} .plan-card-title`).innerHTML = planData.title;
+      document.querySelector(`#${idPrefix} .plan-card-link`).innerHTML = planData.link;
+      document.querySelector(`#${idPrefix} .plan-card-price-label`).innerHTML = planData.from;
+      document.querySelector(`#${idPrefix} .plan-card-price`).innerHTML = planData.price;
+      document.querySelector(`#${idPrefix} .plan-card-desc`).innerHTML = planData.desc;
+      const btn = document.querySelector(`#${idPrefix} .btn-plan-ask`);
+      btn.innerHTML = planData.ask;
+      btn.onclick = () => openAiWithQuery(planData.askQuery);
+    }
+
+    function toggleLanguage() {
+      currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+      document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = currentLanguage;
+
+      const d = DICTIONARY[currentLanguage];
+      document.getElementById('langBtnText').innerText = d.langBtn;
+      document.getElementById('ourPlansTitle').innerText = d.ourPlans;
+      document.getElementById('fabText').innerText = d.fab;
+      document.getElementById('aiInput').placeholder = d.inputPlaceholder;
+      document.getElementById('modalTitle').innerText = d.modalTitle;
+      document.getElementById('modalSubtitle').innerText = d.modalSub;
+      document.getElementById('welcomeTitle').innerHTML = `<i class="ti ti-sparkles" style="color: var(--primary);"></i> ${d.welcomeTitle}`;
+      document.getElementById('welcomeDesc').innerText = d.welcomeDesc;
+      
+      // Update suggestions
+      const pillsContainer = document.querySelector('.ai-suggestion-pills');
+      if (pillsContainer) {
+        pillsContainer.innerHTML = d.suggestions.map(s => 
+          `<div class="ai-suggestion-pill" onclick="sendSuggestion('${s.query.replace(/'/g, "\\'")}')">
+             <i class="ti ${s.icon}"></i> ${s.text}
+           </div>`
+        ).join('');
+      }
+
+      // Update Plans
+      updatePlanCard('emerald', d.plans.emerald);
+      updatePlanCard('hekaya-mixat', d.plans.hekayaMix);
+      updatePlanCard('hekaya-internet', d.plans.hekayaNet);
+      updatePlanCard('aqwa-card', d.plans.akwa);
+
+      updateThemeButton();
+    }
+
+    function toggleAiModal(show) {
+      const overlay = document.getElementById('aiModalOverlay');
+      if (show) {
+        overlay.classList.add('open');
+        loadThreads();
+        document.getElementById('aiInput').focus();
+      } else {
+        overlay.classList.remove('open');
+      }
+    }
+
+    function openAiWithQuery(query) {
+      toggleAiModal(true);
+      document.getElementById('aiInput').value = query;
+      sendMessage();
+    }
+
+    function sendSuggestion(text) {
+      document.getElementById('aiInput').value = text;
+      sendMessage();
+    }
+
+    function clearMessages() {
+      chatMessages = [];
+      const container = document.getElementById('aiMessagesContainer');
+      container.innerHTML = `
+        <div class="ai-welcome-box" id="welcomeBox">
+          <h3 id="welcomeTitle"><i class="ti ti-sparkles" style="color: var(--primary);"></i> How can I help you today?</h3>
+          <p id="welcomeDesc">I am the official e& Egypt AI Assistant. Ask me anything about our postpaid & prepaid plans, internet packages, roaming, or codes.</p>
+          <div class="ai-suggestion-pills">
+            <div class="ai-suggestion-pill" onclick="sendSuggestion('What is the difference between Hekaya Mixat and Hekaya Internet?')">
+              <i class="ti ti-help"></i> Hekaya Mixat vs Internet
+            </div>
+            <div class="ai-suggestion-pill" onclick="sendSuggestion('What are Emerald 460 perks and international minutes?')">
+              <i class="ti ti-crown"></i> Emerald 460 Perks
+            </div>
+            <div class="ai-suggestion-pill" onclick="sendSuggestion('What are all Aqwa Card recharge values?')">
+              <i class="ti ti-credit-card"></i> Aqwa Card Values
+            </div>
+            <div class="ai-suggestion-pill" onclick="sendSuggestion('Can I use DataLine on my mobile phone?')">
+              <i class="ti ti-device-mobile"></i> DataLine Compatibility
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;");
+    }
+
+    function formatMarkdown(text) {
+      if (!text) return '';
+      let html = escapeHtml(text);
+      // Bold
+      html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      // Lists
+      html = html.replace(/^\s*[-•]\s+(.*)$/gm, '<li>$1</li>');
+      html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+      // Headers
+      html = html.replace(/^### (.*$)/gm, '<h4 style="margin: 10px 0 6px; color:#fff; font-size: 15px;">$1</h4>');
+      html = html.replace(/^## (.*$)/gm, '<h3 style="margin: 14px 0 8px; color:#fff; font-size: 16px;">$1</h3>');
+      // Line breaks
+      html = html.replace(/\n\n/g, '<br><br>');
+      return html;
+    }
+
+    // ----------------------------------------------------------------
+    // Document Resolver & Viewer Logic (Click to Open Real Document)
+    // ----------------------------------------------------------------
+    function resolveDocInfo(s, explicitLang) {
+      let label = '';
+      let fileName = '';
+      let productFamily = '';
+      let highlightText = '';
+      let citationIdx = null;
+      let lang = explicitLang || currentLanguage;
+      let pageNum = 1;
+      let charStart = 0;
+      let charEnd = 0;
+      let paraIdx = 0;
+      let rawSpan = '';
+
+      if (typeof s === 'object' && s !== null) {
+        label = s.label || s.plan_name || '';
+        fileName = s.source_file || '';
+        productFamily = s.product_family || '';
+        highlightText = s.highlight_text || '';
+        citationIdx = s.citation_idx || null;
+        lang = s.language || lang;
+        pageNum = s.page_num || 1;
+        charStart = s.char_start || 0;
+        charEnd = s.char_end || 0;
+        paraIdx = s.para_idx || 0;
+        rawSpan = s.raw_span || '';
+      } else if (typeof s === 'string') {
+        label = s;
+      }
+
+      const isArabic = (lang === 'ar' || /[\u0600-\u06FF]/.test(label));
+      
+      if (!fileName) {
+        const text = (label + ' ' + productFamily).toLowerCase();
+        if (text.includes('emerald') || text.includes('إيميرالد') || text.includes('ايميرالد')) {
+          fileName = isArabic ? 'Emerald (2).docx' : 'Emerald (2).pdf';
+        } else if (text.includes('mixat') || text.includes('ميكسات') || text.includes('hekaya mix')) {
+          fileName = isArabic ? 'HekayaMixat.docx' : 'HekayaMixat.pdf';
+        } else if (text.includes('internet') || text.includes('إنترنت') || text.includes('انترنت') || text.includes('hekaya net')) {
+          fileName = isArabic ? 'HekayaInternet.docx' : 'HekayaInternet.pdf';
+        } else if (text.includes('data') || text.includes('داتا')) {
+          fileName = isArabic ? 'DataLine.docx' : 'DataLine.pdf';
+        } else if (text.includes('aqwa') || text.includes('أقوى') || text.includes('اقوى') || text.includes('prepaid') || text.includes('كارت')) {
+          fileName = isArabic ? 'PrepaidSystems.docx' : 'PrepaidSystems.pdf';
+        } else {
+          fileName = isArabic ? 'HekayaMixat.docx' : 'HekayaMixat.pdf';
+        }
+      }
+
+      const fileUrl = `/api/documents/open?file=${encodeURIComponent(fileName)}&lang=${isArabic ? 'ar' : 'en'}`;
+      const downloadUrl = `/api/documents/open?file=${encodeURIComponent(fileName)}&lang=${isArabic ? 'ar' : 'en'}&download=true`;
+      const isPdf = fileName.toLowerCase().endsWith('.pdf');
+
+      return {
+        label: label || fileName,
+        fileName,
+        lang: isArabic ? 'ar' : 'en',
+        fileUrl,
+        downloadUrl,
+        highlightText,
+        citationIdx,
+        pageNum,
+        charStart,
+        charEnd,
+        paraIdx,
+        rawSpan,
+        isPdf
+      };
+    }
+
+    // ---- Build full list of citations from an assistant message ----
+    function buildMessageCitationList(msg) {
+      if (!msg) return [];
+      const citations = [];
+      const sources = msg.sources || [];
+      
+      sources.forEach((s, idx) => {
+        const info = resolveDocInfo(s, currentLanguage);
+        const citationNum = (typeof s === 'object' && s && s.citation_idx) ? s.citation_idx : (idx + 1);
+        citations.push({
+          citationNumber: citationNum,
+          fileName: info.fileName,
+          lang: info.lang,
+          label: info.label,
+          fileUrl: info.fileUrl,
+          downloadUrl: info.downloadUrl,
+          isPdf: info.isPdf,
+          pageNum: info.pageNum || 1,
+          charStart: info.charStart || 0,
+          charEnd: info.charEnd || 0,
+          paraIdx: info.paraIdx || 0,
+          exactChunkText: (typeof s === 'object' && s && s.highlight_text) ? s.highlight_text : info.highlightText,
+          responseText: msg.content || ''
+        });
+      });
+
+      return citations;
+    }
+
+    async function openDocPreview(fileName, lang, label, highlightText) {
+      const info = resolveDocInfo({ source_file: fileName, label, language: lang, highlight_text: highlightText }, lang);
+      const modal = document.getElementById('docModalOverlay');
+      const filenameEl = document.getElementById('docModalFilename');
+      const subEl = document.getElementById('docModalSub');
+      const openTabBtn = document.getElementById('docModalOpenTabBtn');
+      const downloadBtn = document.getElementById('docModalDownloadBtn');
+      const bodyEl = document.getElementById('docModalBody');
+      const iconEl = document.getElementById('docModalIcon');
+
+      iconEl.className = `ti ${info.isPdf ? 'ti-file-type-pdf' : 'ti-file-type-docx'}`;
+      filenameEl.innerText = info.fileName;
+      subEl.innerText = info.label ? `${info.label}` : 'Official e& Egypt Catalog Document';
+
+      openTabBtn.href = info.fileUrl;
+      downloadBtn.href = info.downloadUrl;
+
+      // Show modal immediately with loading indicator
+      modal.classList.add('open');
+      bodyEl.innerHTML = `<div class="doc-loading"><i class="ti ti-loader ti-spin" style="font-size:24px; color:var(--primary);"></i> Loading and highlighting "${escapeHtml(info.fileName)}"...</div>`;
+
+      // Fetch rendered structured HTML with highlighted cited words (works for PDF & DOCX)
+      try {
+        const highlightParam = encodeURIComponent(info.highlightText || highlightText || '');
+        const res = await fetch(`/api/documents/preview?file=${encodeURIComponent(info.fileName)}&lang=${info.lang}&highlight=${highlightParam}`);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        bodyEl.innerHTML = `
+          <div class="doc-rendered-content" dir="${data.is_arabic ? 'rtl' : 'ltr'}">
+            ${data.html}
+          </div>
+        `;
+        
+        // Auto scroll to highlighted word if present
+        setTimeout(() => {
+          const mark = bodyEl.querySelector('.doc-highlight') || bodyEl.querySelector('.doc-cited-callout');
+          if (mark) {
+            mark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 150);
+      } catch (err) {
+        bodyEl.innerHTML = `
+          <div class="doc-error-box">
+            <p style="font-size: 14px; margin-bottom: 12px;">Could not render direct preview in browser.</p>
+            <a href="${info.fileUrl}" target="_blank" class="btn-doc-download-fallback"><i class="ti ti-external-link"></i> Open ${escapeHtml(info.fileName)} Directly</a>
+          </div>
+        `;
+      }
+    }
+
+    function closeDocModal() {
+      const modal = document.getElementById('docModalOverlay');
+      if (modal) modal.classList.remove('open');
+      const nav = document.getElementById('citationNavigator');
+      if (nav) nav.style.display = 'none';
+      citationNavState.citations = [];
+      citationNavState.loadedKey = null;
+    }
+
+    // ---- Citation click from badge [1],[2] in chat bubble ----
+    function clickCitationBadge(citationNumber, clickedEl) {
+      // Find the chatMessages index for this bubble
+      const row = clickedEl.closest('.ai-message-row');
+      if (!row) return;
+      const allRows = document.querySelectorAll('.ai-message-row.assistant');
+      let msgIndex = -1;
+      allRows.forEach((r, i) => {
+        // Match only assistant rows; count only assistant messages in chatMessages
+        if (r === row) msgIndex = i;
+      });
+      // Map to chatMessages (skip user messages in the DOM count)
+      const assistantMsgs = chatMessages.map((m, i) => ({ m, i })).filter(x => x.m.role === 'assistant');
+      const msgEntry = assistantMsgs[msgIndex];
+      if (!msgEntry) return;
+      const msg = msgEntry.m;
+
+      citationNavState.citations = buildMessageCitationList(msg);
+      if (citationNavState.citations.length === 0) return;
+
+      const targetIdx = citationNavState.citations.findIndex(c => c.citationNumber === citationNumber);
+      citationNavState.currentIndex = targetIdx >= 0 ? targetIdx : 0;
+
+      focusActiveCitation();
+    }
+
+    // ---- Step through <mark> elements within the loaded document ----
+    function initHighlightNav() {
+      const bodyEl = document.getElementById('docModalBody');
+      const marks = Array.from(bodyEl.querySelectorAll('.doc-highlight'));
+      const hlCounter = document.getElementById('hlCounter');
+      const hlControls = document.getElementById('hlNavControls');
+      citationNavState.highlightIndex = 0;
+
+      if (marks.length === 0) {
+        if (hlCounter) hlCounter.style.display = 'none';
+        if (hlControls) hlControls.style.display = 'none';
+        return;
+      }
+
+      if (hlCounter) { hlCounter.style.display = 'inline'; hlCounter.innerText = `Mark 1 of ${marks.length}`; }
+      if (hlControls) hlControls.style.display = 'flex';
+
+      // Activate first mark
+      marks.forEach(m => m.classList.remove('doc-highlight-active'));
+      marks[0].classList.add('doc-highlight-active');
+      marks[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function navigateHighlight(delta) {
+      const bodyEl = document.getElementById('docModalBody');
+      const marks = Array.from(bodyEl.querySelectorAll('.doc-highlight'));
+      if (!marks.length) return;
+
+      const next = citationNavState.highlightIndex + delta;
+      if (next < 0 || next >= marks.length) return;
+
+      marks[citationNavState.highlightIndex].classList.remove('doc-highlight-active');
+      citationNavState.highlightIndex = next;
+      marks[next].classList.add('doc-highlight-active');
+      marks[next].scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      const hlCounter = document.getElementById('hlCounter');
+      if (hlCounter) hlCounter.innerText = `Mark ${next + 1} of ${marks.length}`;
+
+      // Update ▲/▼ disabled states
+      const btnUp = document.getElementById('btnPrevHL');
+      const btnDn = document.getElementById('btnNextHL');
+      if (btnUp) btnUp.disabled = (next === 0);
+      if (btnDn) btnDn.disabled = (next === marks.length - 1);
+    }
+    // ---- Step between citations (◀/▶) ----
+    function navigateCitation(delta) {
+      const total = citationNavState.citations.length;
+      if (!total) return;
+      const next = citationNavState.currentIndex + delta;
+      if (next < 0 || next >= total) return;
+      citationNavState.currentIndex = next;
+      focusActiveCitation();
+    }
+
+    // ---- Update navigator UI labels ----
+    function updateCitationNavigatorUI() {
+      const nav = document.getElementById('citationNavigator');
+      const badge = document.getElementById('citationNavBadge');
+      const counter = document.getElementById('citationNavCounter');
+      const fileNameEl = document.getElementById('citationNavFileName');
+      const btnPrev = document.getElementById('btnPrevCitation');
+      const btnNext = document.getElementById('btnNextCitation');
+      if (!nav) return;
+
+      const total = citationNavState.citations.length;
+      const cur = citationNavState.currentIndex;
+      const active = citationNavState.citations[cur];
+      if (!active) { nav.style.display = 'none'; return; }
+
+      nav.style.display = total > 0 ? 'flex' : 'none';
+      badge.innerText = `[${active.citationNumber}]`;
+      counter.innerText = `${cur + 1} of ${total}`;
+      const pageInfo = (active.isPdf && active.pageNum) ? ` • Page ${active.pageNum}` : '';
+      fileNameEl.innerText = `${active.fileName}${pageInfo}`;
+      btnPrev.disabled = (cur === 0);
+      btnNext.disabled = (cur === total - 1);
+    }
+
+    // ---- Core: open the active citation in the doc viewer with real highlights ----
+    async function focusActiveCitation() {
+      const active = citationNavState.citations[citationNavState.currentIndex];
+      if (!active) return;
+
+      updateCitationNavigatorUI();
+
+      const modal = document.getElementById('docModalOverlay');
+      const bodyEl = document.getElementById('docModalBody');
+      const filenameEl = document.getElementById('docModalFilename');
+      const subEl = document.getElementById('docModalSub');
+      const openTabBtn = document.getElementById('docModalOpenTabBtn');
+      const downloadBtn = document.getElementById('docModalDownloadBtn');
+      const iconEl = document.getElementById('docModalIcon');
+
+      modal.classList.add('open');
+
+      const highlightSrc = active.exactChunkText || '';
+      const pageQuery = active.pageNum ? `&page=${active.pageNum}` : '';
+      const charStartQuery = active.charStart ? `&char_start=${active.charStart}` : '';
+      const charEndQuery = active.charEnd ? `&char_end=${active.charEnd}` : '';
+      const paraQuery = active.paraIdx ? `&para_idx=${active.paraIdx}` : '';
+      const cacheKey = `${active.fileName}|p${active.pageNum || 1}|${highlightSrc.slice(0, 60)}`;
+
+      if (citationNavState.loadedKey !== cacheKey) {
+        iconEl.className = `ti ${active.isPdf ? 'ti-file-type-pdf' : 'ti-file-type-docx'}`;
+        filenameEl.innerText = active.fileName;
+        const pageSub = (active.isPdf && active.pageNum) ? ` • Page ${active.pageNum}` : '';
+        subEl.innerText = `${active.label || 'e& Egypt Document'}${pageSub}`;
+        openTabBtn.href = active.fileUrl;
+        downloadBtn.href = active.downloadUrl;
+
+        bodyEl.innerHTML = `<div class="doc-loading"><i class="ti ti-loader ti-spin" style="font-size:22px;color:var(--primary)"></i> Loading ${escapeHtml(active.fileName)}…</div>`;
+
+        try {
+          const url = `/api/documents/preview?file=${encodeURIComponent(active.fileName)}&lang=${active.lang}&highlight=${encodeURIComponent(highlightSrc)}${pageQuery}${charStartQuery}${charEndQuery}${paraQuery}`;
+          const res = await fetch(url);
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          const data = await res.json();
+          bodyEl.innerHTML = `<div class="doc-rendered-content" dir="${data.is_arabic ? 'rtl' : 'ltr'}">${data.html}</div>`;
+          citationNavState.loadedKey = cacheKey;
+        } catch (err) {
+          bodyEl.innerHTML = `<div class="doc-error-box"><p>Could not render document.</p><a href="${active.fileUrl}" target="_blank" class="btn-doc-download-fallback"><i class="ti ti-external-link"></i> Open ${escapeHtml(active.fileName)}</a></div>`;
+          return;
+        }
+      }
+
+      // After load (or cache hit), init highlight navigation and scroll to target
+      setTimeout(() => {
+        initHighlightNav();
+        const activeMark = bodyEl.querySelector('#activeCitationMark') || bodyEl.querySelector('.doc-highlight');
+        if (activeMark) {
+          activeMark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else if (active.pageNum) {
+          const pageCard = document.getElementById(`doc-page-${active.pageNum}`);
+          if (pageCard) pageCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
+    }
+
+    function renderMessages() {
+      const container = document.getElementById('aiMessagesContainer');
+      if (!chatMessages || chatMessages.length === 0) {
+        clearMessages();
+        return;
+      }
+      container.innerHTML = '';
+
+      chatMessages.forEach((msg, msgIdx) => {
+        const row = document.createElement('div');
+        row.className = `ai-message-row ${msg.role}`;
+
+        if (msg.role === 'assistant') {
+          const avatar = document.createElement('div');
+          avatar.className = 'ai-bot-avatar';
+          avatar.innerText = 'e&';
+          row.appendChild(avatar);
+
+          const wrapper = document.createElement('div');
+          wrapper.className = 'ai-bubble-wrapper';
+
+          const bubble = document.createElement('div');
+          bubble.className = 'ai-bubble';
+          bubble.setAttribute('dir', 'auto');
+          
+          let parsedHtml = (typeof marked !== 'undefined' && marked.parse) ? marked.parse(msg.content) : formatMarkdown(msg.content);
+          
+          // Convert inline citations [1], [2] into interactive badges
+          parsedHtml = parsedHtml.replace(/\[(\d+)\]/g, (match, p1) => {
+            return `<span class="citation-badge" title="Click to open source document" onclick="clickCitationBadge(${p1}, this)">[${p1}]</span>`;
+          });
+
+          bubble.innerHTML = parsedHtml;
+          wrapper.appendChild(bubble);
+
+          // Clickable Sources Card
+          if (msg.sources && msg.sources.length > 0) {
+            const sourcesCard = document.createElement('div');
+            sourcesCard.className = 'modal-sources-card';
+
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'modal-sources-title';
+            titleDiv.innerHTML = `<i class="ti ti-file-text"></i> ${DICTIONARY[currentLanguage].sourcesTitle}`;
+            sourcesCard.appendChild(titleDiv);
+
+            const listDiv = document.createElement('div');
+            listDiv.className = 'modal-sources-list';
+
+            msg.sources.forEach((s, sIdx) => {
+              const info = resolveDocInfo(s, currentLanguage);
+              const iconClass = info.isPdf ? 'ti-file-type-pdf' : 'ti-file-type-docx';
+              const exactChunkText = (typeof s === 'object' && s && s.highlight_text) ? s.highlight_text : '';
+              const citationNum = (typeof s === 'object' && s && s.citation_idx) ? s.citation_idx : (sIdx + 1);
+
+              const item = document.createElement('div');
+              item.className = 'modal-source-item';
+              item.title = `Open ${info.fileName}`;
+              item.onclick = () => {
+                // Build full citation list from this message so arrows work
+                citationNavState.citations = buildMessageCitationList(msg);
+                // If no [N] citations in text, build a single-entry list from sources
+                if (citationNavState.citations.length === 0) {
+                  citationNavState.citations = [{
+                    citationNumber: citationNum,
+                    fileName: info.fileName,
+                    lang: info.lang,
+                    label: info.label,
+                    fileUrl: info.fileUrl,
+                    downloadUrl: info.downloadUrl,
+                    isPdf: info.isPdf,
+                    pageNum: info.pageNum || 1,
+                    charStart: info.charStart || 0,
+                    charEnd: info.charEnd || 0,
+                    paraIdx: info.paraIdx || 0,
+                    exactChunkText,
+                    responseText: msg.content || ''
+                  }];
+                }
+                const idx = citationNavState.citations.findIndex(c => c.citationNumber === citationNum);
+                citationNavState.currentIndex = idx >= 0 ? idx : 0;
+                focusActiveCitation();
+              };
+
+              const leftDiv = document.createElement('div');
+              leftDiv.className = 'source-item-left';
+              leftDiv.innerHTML = `
+                <i class="ti ${iconClass} source-icon"></i>
+                <span class="source-label">${escapeHtml(info.label)}</span>
+                ${info.fileName ? `<span class="source-file-badge">${escapeHtml(info.fileName)}</span>` : ''}
+              `;
+              item.appendChild(leftDiv);
+
+              const extBtn = document.createElement('button');
+              extBtn.type = 'button';
+              extBtn.className = 'source-open-ext-btn';
+              extBtn.title = 'Open file in new tab';
+              extBtn.innerHTML = '<i class="ti ti-external-link"></i>';
+              extBtn.onclick = (e) => {
+                e.stopPropagation();
+                window.open(info.fileUrl, '_blank');
+              };
+              item.appendChild(extBtn);
+
+              listDiv.appendChild(item);
+            });
+
+            sourcesCard.appendChild(listDiv);
+            wrapper.appendChild(sourcesCard);
+          }
+
+          // Thinking Process
+          if (msg.thinking && msg.thinking.length > 0) {
+            const toggle = document.createElement('button');
+            toggle.className = 'ai-thinking-toggle';
+            toggle.innerHTML = `<i class="ti ti-chevron-right"></i> View Reasoning (${msg.thinking.length} steps)`;
+            
+            const steps = document.createElement('div');
+            steps.className = 'ai-thinking-steps';
+            steps.innerHTML = msg.thinking.map(t => `<div>• ${escapeHtml(t)}</div>`).join('');
+
+            toggle.onclick = () => {
+              steps.classList.toggle('open');
+              toggle.querySelector('i').className = steps.classList.contains('open') ? 'ti ti-chevron-down' : 'ti ti-chevron-right';
+            };
+
+            wrapper.appendChild(toggle);
+            wrapper.appendChild(steps);
+          }
+
+          row.appendChild(wrapper);
+        } else {
+          const bubble = document.createElement('div');
+          bubble.className = 'ai-bubble';
+          bubble.setAttribute('dir', 'auto');
+          bubble.innerText = msg.content;
+          row.appendChild(bubble);
+        }
+
+        container.appendChild(row);
+      });
+
+      container.scrollTop = container.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('aiInput');
+      const query = input.value.trim();
+      if (!query || isWaitingResponse) return;
+
+      input.value = '';
+      isWaitingResponse = true;
+
+      // Add user message
+      chatMessages.push({ role: 'user', content: query });
+
+      // Add temporary loading assistant message
+      const loadingMessages = [
+        'thinking...', 'processing...', 'analyzing...', 'figuring it out...', 
+        'working on it...', 'checking...', 'connecting the dots...', 
+        'calculating...', 'almost there...'
+      ];
+      const randomMsg = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
+      const tempMsg = { role: 'assistant', content: `⏳ ${randomMsg}`, sources: [], thinking: [] };
+      chatMessages.push(tempMsg);
+      renderMessages();
+
+      try {
+        const historyPayload = chatMessages
+          .filter(m => m !== tempMsg)
+          .map(m => ({ role: m.role, content: m.content }));
+
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query, chat_history: historyPayload })
+        });
+
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+
+        tempMsg.content = data.answer;
+        tempMsg.sources = data.sources || [];
+        tempMsg.thinking = data.thinking_steps || [];
+        renderMessages();
+        saveCurrentThread();
+
+      } catch (err) {
+        tempMsg.content = '❌ An error occurred while retrieving the answer. Please ensure `server.py` is running.';
+        renderMessages();
+      } finally {
+        isWaitingResponse = false;
+      }
+    }
+  </script>
+</body>
+</html>

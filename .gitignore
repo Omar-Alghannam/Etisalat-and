@@ -1,0 +1,30 @@
+# Environment variables (API Keys & Secrets)
+.env
+.env.local
+.env.*.local
+
+# Python / Virtual Environment
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Vector Store / Local Databases
+chroma_db/
+*.sqlite3
+*.db
+
+# Logs and Scratch
+*.log
+scratch/
+.system_generated/
+.gemini/
+
+# OS Files
+.DS_Store
+Thumbs.db

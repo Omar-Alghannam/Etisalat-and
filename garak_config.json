@@ -1,0 +1,17 @@
+{
+  "rest": {
+    "RestGenerator": {
+      "name": "e_and_egypt_rag",
+      "uri": "http://localhost:8000/api/chat",
+      "method": "post",
+      "req_template_json_object": {
+        "query": "$INPUT",
+        "chat_history": []
+      },
+      "response_json": true,
+      "response_json_field": "answer",
+      "req_timeout": 120,
+      "timeout": 120
+    }
+  }
+}
